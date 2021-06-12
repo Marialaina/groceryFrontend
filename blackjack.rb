@@ -49,7 +49,7 @@ spades_set.cards = spades_set.rank.each {|r| deck_of_cards << card = {"theRank" 
 shuffle_cards =  deck_of_cards.shuffle
 
 human.hand = shuffle_cards.sample(2).flatten
-p human.hand
+# p human.hand
 
 deck_of_cards.each do |h|
    if h["theRank"] == "ace"
@@ -65,13 +65,32 @@ puts "Hit?"
 bet_game = gets.chomp
 
 if bet_game == "yes"
-   p human.bankroll - 10
-    human.hand.push(shuffle_cards.sample(1))
+    human.hand.push(shuffle_cards.pop)
+    p human.hand
+    p human.bankroll - 10
 elsif bet_game == "stay"
         p human_player(deck_of_cards)
 end
 
-p human.hand
+def human_cards (deck)
+   sum = 0
+   puts deck
+   deck.each {|r| sum += r["points"]}
+   return sum
+end
+
+puts human_cards(human.hand)
+
+if human_cards(human.hand) > 21
+    puts "leave the game"
+elsif human_cards(human.hand) == 21
+    puts "YOU WIN!"
+else
+    puts "haven't gotten here yet"
+end
+
+
+# p human.hand
 
 
 # shuffle_cards =  deck_of_cards.shuffle.enum_for(:each_slice, 13).to_a
