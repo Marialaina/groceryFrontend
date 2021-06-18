@@ -7,10 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Model.create({ column: data, column: data })
 
-Character.create([
-	{ name: "Neo", description: "the one" },
-	{ name: "Trinity", description: "the two" },
-	{ name: "Morpheus", description: "the three" },
-	{ name: "Agent Smith", description: "the four" },
-])
+# Character.create([
+# 	{ name: "Neo", description: "the one" },
+# 	{ name: "Trinity", description: "the two" },
+# 	{ name: "Morpheus", description: "the three" },
+# 	{ name: "Agent Smith", description: "the four" },
+# ])
+
+Vehicle.create([
+	{ name: "Spaceship", style: "Nebuchadnezzar" }
+]
+)
 
