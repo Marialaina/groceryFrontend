@@ -65,14 +65,8 @@ const nullGrocery = {
 const [targetGroceries, setTargetGroceries] = useState(nullGrocery)
 
 const getTargetGroceries = async (grocery) => {
-  const response = await fetch(url + grocery.id + "/", {
-    method: "put",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(grocery),
-  });
-  getGroceries();
+ setTargetGroceries(grocery);
+ props.history.push("/edit");
 }
 
 const updateGroceries = async (grocery) => {
@@ -107,7 +101,8 @@ useEffect(() => {
         <Route
           exact
           path="/"
-          render={(routerProps) => <AllGroceries {...routerProps} groceries={groceries} />}
+          render={(routerProps) => <AllGroceries {...routerProps} 
+          groceries={groceries} />}
         />
         <Route
           path="/grocery/:id"
@@ -138,6 +133,17 @@ useEffect(() => {
           />
           )}
           />
+          <Route
+            path="/grocery/:id"
+            render={(routerProps) => (
+          <SingleGrocery
+            {...routerProps}
+            groceries={groceries}
+            edit={getTargetGroceries}
+            deleteGroceries={deleteGroceries}
+    />
+  )}
+/>
       </Switch>
     </div>
     

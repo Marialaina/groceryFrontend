@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 // destructuring the props needed to get our post, including router prop match
 const SingleGrocery = ({ groceries, match, edit, deleteGroceries }) => {
   const id = parseInt(match.params.id); //get the id from url param
+  console.log(id)
+  console.log(groceries)
   const grocery = groceries.find((grocery) => grocery.id === id);
+  console.log(grocery)
 
   ////////////////////
   // Styles
