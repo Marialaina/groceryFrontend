@@ -12,17 +12,30 @@ const Form = ( { initialGrocery, handleSubmit, buttonLabel, history }) => {
         handleSubmit(formData);
         history.push("/");
     }
+    const newStyle = {
+        background: "#4777",
+        color: "#e87ac1"
+    }
+
+    const formStyle = {
+        display:"inline-block",
+        width: "70%",
+        height: "50%"
+    }
 
 
     return (
-        <form onSubmit={handleSubmisson}>
+        <form  style={formStyle}
+        onSubmit={handleSubmisson}>
         <input
+        style={newStyle}
           type="text"
           onChange={handleChange}
           value={formData.grocery}
           name="grocery"
         />
         <input
+        style={newStyle}
           type="text"
           onChange={handleChange}
           value={formData.quantity}

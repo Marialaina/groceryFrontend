@@ -14,15 +14,22 @@ const SingleGrocery = ({ groceries, match, edit, deleteGroceries }) => {
     border: "3px solid green",
     width: "80%",
     margin: "30px auto",
+    background: "#4777",
+    color: "#e87ac1"
   };
+
+  const button = {
+     margin: "10px",  
+  }
 
   return (
     <div style={div}>
       <h1>{grocery.grocery}</h1>
       <h2>{grocery.quantity}</h2>
-      <button onClick={(event) => edit(grocery)}>Edit</button>
+      <button style={button} onClick={(event) => edit(grocery)}>Edit</button>
+      <button style={button} onClick={(event) => deleteGroceries(grocery)}>Delete</button>
       <Link to="/">
-        <button>Go Back</button>
+        <button style={button} >Home</button>
       </Link>
     </div>
   );

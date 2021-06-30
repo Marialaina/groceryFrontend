@@ -7,6 +7,8 @@ const Grocery = ( {grocery} ) => {
     border: "3px solid",
     margin: "10px auto",
     width: "80%",
+    background: "#4777",
+    text: "white"
     }
 
     return (

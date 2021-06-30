@@ -15,13 +15,23 @@ function App(props) {
 
   const h1 = {
     textAlign: "center",
-    margin: "10px"
+    margin: "10px",
+    color: "white",
+  }
+
+  const newStyle = {
+    background: "#4777",
+    color: "#e87ac1"
   }
 
   const button ={
-    backgroundColor: "navy",
+    backgroundColor: "#64a764",
     display: "block",
     margin: "auto"
+  }
+
+  const groceryStyle = {
+    backgroundColor: "gray"
   }
 
   //API URL
@@ -76,6 +86,14 @@ const updateGroceries = async (grocery) => {
   getGroceries()
 }
 
+const deleteGroceries = async (grocery) => {
+  const response = await fetch(url + grocery.id + "/", {
+    method: "delete",
+  })
+  getGroceries();
+  props.history.push("/");
+}
+
 //useEFFECT
 useEffect(() => {
   getGroceries();
@@ -94,7 +112,9 @@ useEffect(() => {
         <Route
           path="/grocery/:id"
           render={(routerProps) => (
-            <SingleGrocery {...routerProps} groceries={groceries} edit={getTargetGroceries} />
+            <SingleGrocery {...routerProps} groceries={groceries} 
+            edit={getTargetGroceries} 
+            deleteGroceries={deleteGroceries}/>
           )}
         />
        <Route
@@ -106,15 +126,15 @@ useEffect(() => {
             handleSubmit={addGroceries}
             buttonLabel="add grocery"
           />
-  )}
-/>
+          )}
+        />
         <Route
           path="/edit"
           render={(routerProps) => (<Form 
             {...routerProps} 
             initialGrocery={targetGroceries}
             handleSubmit={updateGroceries}
-            buttonLabel="update todo"
+            buttonLabel="edit grocery"
           />
           )}
           />
